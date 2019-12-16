@@ -1,3 +1,10 @@
+## [5.5.3](https://github.com/yeutech-lab/react-loadable/compare/v5.5.2...v5.5.3) (2019-12-16)
+
+
+### Bug Fixes
+
+* **release:** previous release was skipped on npm (for some unknown reason)\ ([88fa822](https://github.com/yeutech-lab/react-loadable/commit/88fa82226f56e8da3a2debe6ffab4d7ebde15fd4))
+
 ## [5.5.2](https://github.com/yeutech-lab/react-loadable/compare/v5.5.1...v5.5.2) (2019-12-16)
 
 
