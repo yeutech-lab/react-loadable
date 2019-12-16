@@ -49,4 +49,5 @@ jobs:
       node_js:
         - 'lts/*'
       script:
+        - npm run build
         - npx semantic-release
