@@ -1,3 +1,10 @@
+## [5.5.4](https://github.com/yeutech-lab/react-loadable/compare/v5.5.3...v5.5.4) (2019-12-16)
+
+
+### Bug Fixes
+
+* **dependencies:** switching @semantic-release/gitlab for @semantic-release/github ([db2d704](https://github.com/yeutech-lab/react-loadable/commit/db2d704bd8471855917383eff9056c215ffcfd50))
+
 ## [5.5.3](https://github.com/yeutech-lab/react-loadable/compare/v5.5.2...v5.5.3) (2019-12-16)
 
 
