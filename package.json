@@ -1,11 +1,20 @@
 {
-  "name": "react-loadable",
-  "version": "5.5.0",
+  "name": "@yeutech-lab/react-loadable",
+  "version": "1.0.0",
   "description": "A higher order component for loading components with promises",
   "main": "lib/index.js",
   "author": "James Kyle <me@thejameskyle.com>",
+  "contributors": [
+    "Dimitri Kopriwa <dimitri.kopriwa@yeutech.com>"
+  ],
   "license": "MIT",
-  "repository": "thejameskyle/react-loadable",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeutech-lab/react-loadable"
+  },
+  "bugs": {
+    "url": "https://github.com/yeutech-lab/react-loadable/issues"
+  },
   "files": [
     "babel.js",
     "webpack.js",
@@ -14,31 +23,159 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "babel src -d lib",
-    "start": "yarn build && webpack && babel-node example/server.js",
-    "prepublish": "yarn build"
+    "start": "npm build && webpack && babel-node example/server.js",
+    "prepublish": "npm build",
+    "flow": "flow"
   },
   "dependencies": {
+    "@babel/runtime": "^7.7.6",
     "prop-types": "^15.5.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-dynamic-import-node": "^1.1.0",
-    "babel-plugin-module-resolver": "^2.7.1",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/plugin-transform-object-assign": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-flow": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/exec": "^3.3.8",
+    "@semantic-release/git": "^7.0.18",
+    "@semantic-release/gitlab": "^4.0.4",
+    "@semantic-release/npm": "^5.3.4",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-polyfill": "^6.26.0",
+    "cz-conventional-changelog": "^3.0.2",
     "express": "^4.16.1",
     "flow-bin": "^0.41.0",
-    "jest": "^21.2.1",
+    "jest-cli": "^24.5.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",
-    "webpack": "^3.6.0"
+    "semantic-release": "^15.13.31",
+    "webpack": "^4.41.3"
   },
   "peerDependencies": {
     "react": "*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest",
+    "access": "public"
+  },
+  "greenkeeper": {
+    "label": "dependency",
+    "commitMessages": {
+      "initialBadge": "docs(readme): add Greenkeeper badge",
+      "initialDependencies": "chore(package): update dependencies",
+      "initialBranches": "chore(travis): whitelist greenkeeper branches",
+      "dependencyUpdate": "fix(package): update ${dependency} to version ${version}",
+      "devDependencyUpdate": "chore(package): update ${dependency} to version ${version}",
+      "dependencyPin": "fix: pin ${dependency} to ${oldVersion}",
+      "devDependencyPin": "chore: pin ${dependency} to ${oldVersion}",
+      "closes": "\n\nCloses #${number}"
+    }
+  },
+  "jest": {
+    "testURL": "http://localhost",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/internals"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 46,
+        "branches": 50,
+        "functions": 25,
+        "lines": 54
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
+  },
+  "release": {
+    "branch": "master",
+    "npmPublish": true,
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json",
+          "src/**/*.js",
+          "CHANGELOG.md",
+          "README.md",
+          "LICENSE.md"
+        ]
+      }
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/github",
+        "assets": [
+          {
+            "path": "package.json"
+          },
+          {
+            "path": "LICENSE.md"
+          },
+          {
+            "path": "CHANGELOG.md"
+          },
+          {
+            "path": "README.md"
+          },
+          {
+            "path": "dist/*.esm.js",
+            "label": "ES module"
+          },
+          {
+            "path": "dist/*.esm.js.map",
+            "label": "ES module source map"
+          },
+          {
+            "path": "dist/*.min.js",
+            "label": "UMD compressed"
+          },
+          {
+            "path": "dist/*.min.js.map",
+            "label": "UMD compressed source map"
+          },
+          {
+            "path": "dist/*.cjs.min.js",
+            "label": "CJS compressed"
+          },
+          {
+            "path": "dist/*.cjs.min.js.map",
+            "label": "CJS compressed source map"
+          },
+          {
+            "path": "lib/*.js",
+            "label": "CJS folder"
+          }
+        ]
+      }
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

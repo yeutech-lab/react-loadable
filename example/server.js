@@ -2,8 +2,8 @@ import express from 'express';
 import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import Loadable from 'react-loadable';
-import { getBundles } from 'react-loadable/webpack'
+import Loadable from '@yeutech-lab/react-loadable';
+import { getBundles } from '@yeutech-lab/react-loadable/webpack'
 import App from './components/App';
 
 const stats = require('./dist/react-loadable.json');

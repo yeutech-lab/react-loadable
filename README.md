@@ -1,3 +1,11 @@
+## Why did we fork
+
+This project was originally hosted at https://github.com/jamiebuilds/react-loadable
+
+Since PR https://github.com/jamiebuilds/react-loadable/pull/216, we marked this project being unmaintained.
+
+## Readme
+
 ![React Loadable](http://thejameskyle.com/img/react-loadable-header.png)
 
 > A higher order component for loading components with dynamic imports.
@@ -11,7 +19,7 @@ yarn add react-loadable
 ## Example
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 import Loading from './my-loading-component';
 
 const LoadableComponent = Loadable({
@@ -174,7 +182,7 @@ class MyComponent extends React.Component {
     Bar: null
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     import('./components/Bar').then(Bar => {
       this.setState({ Bar: Bar.default });
     });
@@ -197,7 +205,7 @@ What about when `import()` fails? What about server-side rendering?
 Instead you can use `Loadable` to abstract away the problem.
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 
 const LoadableBar = Loadable({
   loader: () => import('./components/Bar'),
@@ -527,7 +535,7 @@ For this, there is [`Loadable.Capture`](#loadablecapture) component which can
 be used to collect all the modules that were rendered.
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 
 app.get('/', (req, res) => {
   let modules = [];
@@ -578,7 +586,7 @@ To convert from modules to bundles, import the [`getBundles`](#getbundles)
 method from `react-loadable/webpack` and the data from Webpack.
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 import { getBundles } from 'react-loadable/webpack'
 import stats from './dist/react-loadable.json';
 
@@ -655,7 +663,7 @@ which on resolution means that we can hydrate our app.
 // src/entry.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 import App from './components/App';
 
 Loadable.preloadReady().then(() => {
@@ -1063,7 +1071,7 @@ you:
 **Input**
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 
 const LoadableMyComponent = Loadable({
   loader: () => import('./MyComponent'),
@@ -1080,7 +1088,7 @@ const LoadableComponents = Loadable.Map({
 **Output**
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 import path from 'path';
 
 const LoadableMyComponent = Loadable({
@@ -1154,7 +1162,7 @@ Specifying the same `loading` component or `delay` every time you use
 own Higher-Order Component (HOC) to set default options.
 
 ```js
-import Loadable from 'react-loadable';
+import Loadable from '@yeutech-lab/react-loadable';
 import Loading from './my-loading-component';
 
 export default function MyLoadable(opts) {
