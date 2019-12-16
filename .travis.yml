@@ -1,5 +1,5 @@
 language: node_js
-sudo: required
+os: linux
 dist: trusty
 
 # Blocklist
@@ -29,7 +29,7 @@ stages:
   - build
   - test
   - release
-  - deploy
+#  - deploy
 
 jobs:
   include:
@@ -60,7 +60,6 @@ jobs:
       if: branch = master AND type = push AND fork = false
       node_js:
         - 'lts/*'
-      skip_cleanup: true
       script:
         - npx semantic-release
 
@@ -78,7 +77,6 @@ jobs:
 #        - npm run styleguide:build
 #      deploy:
 #        - provider: pages
-#          skip_cleanup: true
 #          github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
 #          keep_history: true
 #          local_dir: public/
